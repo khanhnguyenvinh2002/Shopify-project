@@ -1,7 +1,3 @@
-/*
-  app.js -- This creates an Express webserver with login/register/logout authentication
-*/
-
 // *********************************************************** //
 //  Loading packages to support the server
 // *********************************************************** //
@@ -23,7 +19,6 @@ const methodOverride = require('method-override');
 
 const mongoose = require( 'mongoose' );
 const mongodb_URI = 'mongodb+srv://richmond:password123.@cluster0.gymvd.mongodb.net/blog?retryWrites=true&w=majority'
-//const mongodb_URI = 'mongodb+srv://cs_sj:BrandeisSpr22@cluster0.kgugl.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 
 mongoose.connect( mongodb_URI, { useNewUrlParser: true } );
 const db = mongoose.connection;
