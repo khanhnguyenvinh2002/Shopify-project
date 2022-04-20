@@ -1,0 +1,44 @@
+<form method="post" action="/api/shipment">
+    Title: <input type="text" name="title" required><br>
+    Description: <input type="text" name="desc" required><br>
+    <input type="hidden" name="status" value="confirmed" ><br>
+    <input type="hidden" id="inv" name="inventories" value="<%=JSON.stringify(inventories)%>">
+    <table class="table table-striped" >
+        <tr style="border-bottom: solid 3px;">
+            <th>Title</th>
+            <th>Count</th>
+            <th>Description</th>
+            <th>Manufacturer</th>
+            <th>Categories</th>
+        </tr>
+            <%  for (var i=0; i<inventories.length; i++){%>
+            <tr>
+                <td><%= inventories[i].title %></td> 
+                <td>
+                    <input type="number" id="c<%=i%>" value="<%= inventories[i].count%>" onchange="editInventories(this.value, <%=i%>)"></td> 
+                <td><%= inventories[i].desc %></td> 
+                <td><%= inventories[i].manufacturer %></td> 
+                <td>
+                    <% for (category of inventories[i].categories){%>
+                        <%= category %>
+                    <% } %>
+                </td> 
+            </tr>
+            <% } %>
+    </table>
+    <input type="submit">
+</form>
+
+<script>
+    var res
+    let firstTime = true
+    function editInventories(val, i) { 
+        if(firstTime) {
+            res = <%-JSON.stringify(inventories)%>;
+            firstTime = false;
+        }
+        res[i].count= val
+        document.getElementById(`c${i}`).value = val;
+        document.getElementById("inv").value =JSON.stringify(res);
+    }
+</script>

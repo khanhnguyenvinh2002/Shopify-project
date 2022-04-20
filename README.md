@@ -1,7 +1,6 @@
-# CS103a Express App Demo
+# Shopify challenge
 
-This is a starter project which has a simple authentication module 
-and provides access to a mongoose database in the cloud.
+This is the submission for Fall 2022 Shopify intern challenge
 
 ## Installation
 Download the project from github and download nodejs and npm from https://nodejs.org

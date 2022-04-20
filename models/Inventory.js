@@ -17,10 +17,6 @@ const InventorySchema = new mongoose.Schema({
     manufacturer:{
         type: String,
         required: true,
-    },
-    categories:{
-        type:Array,
-        required: false
     }
 }, {timestamps: true})
 

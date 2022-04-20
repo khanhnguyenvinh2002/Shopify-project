@@ -1,0 +1,9 @@
+<form method="post" action="/api/inventory/<%=inventory._id%>?_method=PUT">
+    <input type="hidden" name="_method" value="PUT">
+    Title: <input type="text" name="title" value="<%= inventory.title%>" onchange="inventory.title = this.value"><br>
+    Count: <input type="number" name="count" value="<%= inventory.count%>" onchange="inventory.count = this.value"><br>
+    Description: <input type="text" name="desc" value="<%= inventory.desc%>" onchange="inventory.desc = this.value"><br>
+    Manufacturer: <input type="text" name="manufacturer" value="<%= inventory.manufacturer%>" onchange="inventory.manufacturer = this.value"><br>
+
+    <input type="submit">
+</form>

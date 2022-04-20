@@ -7,7 +7,7 @@ async function updateInventory(list) {
 
     for (const e of list) {
         let item = await Inventory.findOneAndUpdate({
-            _id: e.id,
+            _id: e._id,
             count: { $gte: e.count }
         }
             , {
@@ -15,12 +15,14 @@ async function updateInventory(list) {
                     count: - e.count
                 }
             }, { useFindAndModify: false })
+
         if (item == null || item.count < e.count) {
-            throw `not enough items for item: ${e.title}`;
+
+            throw `not enough items for item: ${e.title}, item count: ${item.count}, new count: ${e.count}`;
         }
 
         item = await Inventory.findOne({
-            _id: e.id,
+            _id: e._id,
             count: { $gte: 0 }
         });
 
@@ -31,6 +33,7 @@ async function updateInventory(list) {
 }
 //CREATE SHIPMENT
 router.post("/", async (req, res) => {
+    req.body.inventories = JSON.parse(req.body.inventories)
     const newShipment = new Shipment(req.body);
     console.log(req.body)
     const session = await db.startSession();
@@ -56,9 +59,9 @@ router.put("/:id", async (req, res) => {
         const shipment = await Shipment.findById(req.params.id);
 
         const updatedShipment = await Shipment.findByIdAndUpdate(req.params.id, {
-            status: req.body.status
+            $set: req.body
         }, { useFindAndModify: false });
-        res.status(200).json(updatedShipment)
+        res.status(200).json(updatedShipment);
     } catch (err) {
         res.status(500).json(err)
     }

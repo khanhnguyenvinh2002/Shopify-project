@@ -1,9 +1,57 @@
+<a href="/inventory/new">New Inventory</a>
+<table class="table table-striped">
+    <tr style="border-bottom: solid 3px;">
+        <th>Title</th>
+        <th>Count</th>
+        <th>Description</th>
+        <th>Manufacturer</th>
+        <th>Actions</th>
+    </tr>
+        <% for (inventory of inventories){%>
+        <tr>
+            <td><%= inventory.title %></td> 
+            <td><%= inventory.count %></td> 
+            <td><%= inventory.desc %></td> 
+            <td><%= inventory.manufacturer %></td> 
+            <td>
+                <a href="/inventory/edit/<%= inventory._id%>"><button> Edit</button></a>
+                <form method="post" action="/api/inventory/<%=inventory._id%>?_method=DELETE">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit">Delete</button>
+                </form>
+            </td> 
+        </tr>
+        <% } %>
+</table>
 
-
-    <div class="jumbotron">
-        <h1>Local Authentication Demo</h1>
-        <p>Demonstrating Node/Express features</p>
-    </div>
-    
-
-
+<a href="/shipment/new">New Shipment</a>
+<table class="table table-striped">
+    <tr style="border-bottom: solid 3px;">
+        <th>Title</th>
+        <th>Description</th>
+        <th>Status</th>
+        <th>Inventories</th>
+        <th>Actions</th>
+    </tr>
+        <% for (shipment of shipments){%>
+        <tr>
+            <td><%= shipment.title %></td> 
+            <td><%= shipment.desc %></td> 
+            <td><%= shipment.status %></td> 
+            <td>
+                <% for (inventory of shipment.inventories){%>
+                    <div>
+                        Title: <%= inventory.title %>; Count: <%= inventory.count %>
+                    </div>
+                <% } %>
+            </td> 
+            <td>
+                <a href="/shipment/edit/<%= shipment._id%>"><button> Edit</button></a>
+                <form method="post" action="/api/shipment/<%=shipment._id%>?_method=DELETE">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit">Delete</button>
+                </form>
+            </td> 
+        </tr>
+        <% } %>
+</table>

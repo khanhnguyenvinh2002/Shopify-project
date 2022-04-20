@@ -1,0 +1,14 @@
+<form method="post" action="/api/shipment/<%=shipment._id%>?_method=PUT">
+    <input type="hidden" name="_method" value="PUT">
+    Title: <input type="text" name="title" value="<%= shipment.title%>" onchange="shipment.title = this.value"><br>
+    Description: <input type="text" name="desc" value="<%= shipment.desc%>" onchange="shipment.desc = this.value"><br>
+
+    Status: <select name="status" value="<%= shipment.status%>" onchange="shipment.status = this.value">
+        <option>confirmed</option>
+        <option>in progress</option>
+        <option>completed</option>
+        <option>cancelled</option>
+    </select><br>
+
+    <input type="submit">
+</form>

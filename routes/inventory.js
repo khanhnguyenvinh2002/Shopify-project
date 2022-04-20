@@ -6,7 +6,7 @@ router.post("/", async (req, res) => {
     const newInventory = new Inventory(req.body);
     try {
         const savedInventory = await newInventory.save();
-        res.status(200).json(savedInventory)
+        res.status(200).json(savedInventory);
     }
     catch (err) {
         res.status(500).json(err);
@@ -20,7 +20,7 @@ router.put("/:id", async (req, res) => {
         const updatedInventory = await Inventory.findByIdAndUpdate(req.params.id, {
             $set: req.body
         }, { new: true });
-        res.status(200).json(updatedInventory)
+        res.status(200).json(updatedInventory);
     } catch (err) {
         res.status(500).json(err)
     }
