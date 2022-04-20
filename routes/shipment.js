@@ -33,6 +33,13 @@ async function updateInventory(list) {
 }
 //CREATE SHIPMENT
 router.post("/", async (req, res) => {
+    let item = await Shipment.findOne({title: req.body.title});
+    console.log(item)
+    if(item != null){
+        res.status(500).json("err");
+        return;
+    }
+    console.log("still in")
     req.body.inventories = JSON.parse(req.body.inventories)
     const newShipment = new Shipment(req.body);
     console.log(req.body)
