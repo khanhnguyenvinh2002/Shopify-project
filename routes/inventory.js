@@ -53,18 +53,10 @@ router.get("/:id", async (req, res) => {
 //GET ALL INVENTORIES
 router.get("/", async (req, res) => {
     const manufacturer = req.query.manufacturer;
-    const category = req.query.category;
     try {
         let inventories;
         if (manufacturer) {
             inventories = await Inventory.find({ manufacturer })
-        } else if (category) {
-            inventories = await Inventory.find({
-                categories: {
-                    //check include
-                    $in: [category]
-                }
-            })
         } else {
             inventories = await Inventory.find()
         }
