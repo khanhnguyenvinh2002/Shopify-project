@@ -1,3 +1,4 @@
+<h1>Edit Shipment</h1>
 <form method="post" action="/api/shipment/<%=shipment._id%>?_method=PUT">
     <input type="hidden" name="_method" value="PUT">
     Title: <input type="text" name="title" value="<%= shipment.title%>" onchange="shipment.title = this.value"><br>

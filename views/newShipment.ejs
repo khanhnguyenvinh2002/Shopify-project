@@ -1,3 +1,4 @@
+<h1>New Shipment</h1>
 <form method="post" action="/api/shipment">
     Title: <input type="text" name="title" required><br>
     Description: <input type="text" name="desc" required><br>
@@ -9,7 +10,6 @@
             <th>Count</th>
             <th>Description</th>
             <th>Manufacturer</th>
-            <th>Categories</th>
         </tr>
             <%  for (var i=0; i<inventories.length; i++){%>
             <tr>
@@ -18,11 +18,6 @@
                     <input type="number" id="c<%=i%>" value="<%= inventories[i].count%>" onchange="editInventories(this.value, <%=i%>)"></td> 
                 <td><%= inventories[i].desc %></td> 
                 <td><%= inventories[i].manufacturer %></td> 
-                <td>
-                    <% for (category of inventories[i].categories){%>
-                        <%= category %>
-                    <% } %>
-                </td> 
             </tr>
             <% } %>
     </table>

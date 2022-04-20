@@ -164,7 +164,7 @@ app.get("/shipment/delete/:id",
   async (req, res, next) => {
     const id = req.params.id;
     const ress = await axios.delete(`http://localhost:5001/api/shipment/${id}`)
-    res.render("index")
+    res.r("index")
   }
 );
 

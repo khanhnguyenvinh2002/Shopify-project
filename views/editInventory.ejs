@@ -1,3 +1,4 @@
+<h1>Edit Inventory</h1>
 <form method="post" action="/api/inventory/<%=inventory._id%>?_method=PUT">
     <input type="hidden" name="_method" value="PUT">
     Title: <input type="text" name="title" value="<%= inventory.title%>" onchange="inventory.title = this.value"><br>
