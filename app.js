@@ -20,7 +20,7 @@ const methodOverride = require('method-override');
 const mongoose = require( 'mongoose' );
 const mongodb_URI = 'mongodb+srv://richmond:password123.@cluster0.gymvd.mongodb.net/blog?retryWrites=true&w=majority'
 
-mongoose.connect( mongodb_URI, { useNewUrlParser: true } );
+mongoose.connect( mongodb_URI, { useNewUrlParser: true, useUnifiedTopology: true } );
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {console.log("we are connected!!!")});
