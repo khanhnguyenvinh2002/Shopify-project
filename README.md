@@ -92,3 +92,8 @@ Before delete, we have 6 shipments:
 
 After delete last item, we have 5 shipments:
 ![image of after deleting shipment](https://user-images.githubusercontent.com/74166827/164125938-00a4e002-32c7-455d-bf61-951a79fe6b16.png)
+
+## Future improvements:
+
+- ExpressJS and NodeJS is a fast option to build an interface with API and deploying to the same place. 
+- Currently, there are some limitations on how each shipment can manage the inventory. Future improvements might include adding back the inventories previously substracted for the shipments when the shipment is cancelled. When authorization is implemented, there can be restrictions on who can edit the shipment or who can create the inventories.
